@@ -11,6 +11,7 @@ from ...sensor import (
     InWattsSensorEntity,
     LevelSensorEntity,
     OutWattsSensorEntity,
+    InWattsSolarSensorEntity,
 )
 from .. import BaseDevice, const
 
@@ -28,6 +29,8 @@ class DeltaPro3(BaseDevice):
             InWattsSensorEntity(client, self, "powInSumW", const.TOTAL_IN_POWER),
             OutWattsSensorEntity(client, self, "powOutSumW", const.TOTAL_OUT_POWER),
             InWattsSensorEntity(client, self, "powGetAcIn", const.AC_IN_POWER),
+            InWattsSolarSensorEntity(client, self, "powGetPvH", const.SOLAR_1_IN_POWER),
+            InWattsSolarSensorEntity(client, self, "powGetPvL", const.SOLAR_2_IN_POWER),            
         ]
 
     def numbers(self, client: EcoflowApiClient) -> list[BaseNumberEntity]:
